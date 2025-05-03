@@ -6,7 +6,7 @@ import org.conectatrens.entity.UsuarioEntity;
 
 @ApplicationScoped
 public class UsuarioRepository implements PanacheRepository<UsuarioEntity> {
-    
+
     public UsuarioEntity findByEmail(String email) {
         return find("email", email).firstResult();
     }
