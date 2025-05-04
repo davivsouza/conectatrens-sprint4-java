@@ -19,6 +19,11 @@ public class ComprovanteService {
                 .orElseThrow(() -> new NotFoundException("Comprovante não encontrado"));
     }
 
+    public List<ComprovanteEntity> findByUserId(Long usuario_id) {
+        return comprovanteRepository.find("usuario_id", usuario_id).list();
+
+    }
+
     public List<ComprovanteEntity> listAll() {
         return comprovanteRepository.findAll().list();
     }

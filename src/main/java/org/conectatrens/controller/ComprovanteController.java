@@ -36,6 +36,19 @@ public class ComprovanteController {
         }
     }
 
+    @GET
+    @Path("/user/{id}")
+    public Response getComprovanteByUserId(@PathParam("id") Long id) {
+        try {
+            List<ComprovanteEntity> comprovanteEntity = comprovanteService.findByUserId(id);
+            return Response.ok(comprovanteEntity).build();
+        } catch (NotFoundException e) {
+            return Response.status(Response.Status.NOT_FOUND)
+                    .entity(e.getMessage())
+                    .build();
+        }
+    }
+
     @POST
     @Transactional
     public Response createComprovante(ComprovanteEntity comprovanteEntity) {
